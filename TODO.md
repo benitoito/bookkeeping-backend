@@ -1,0 +1,1 @@
+On Login: Generate JWT on successfull login and send to user.
