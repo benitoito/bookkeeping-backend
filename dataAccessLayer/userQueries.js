@@ -1,5 +1,5 @@
 import { connectToDataBase, checkConnection } from "./dbConnection.js";
-import { trace } from "../utilities/util.js";
+import { trace } from "../utilities/general.js";
 
 
 export const createUser = ({firstName, lastName, email, password}) => {
