@@ -1,9 +1,7 @@
 import { DataTypes} from "sequelize";
 import database from "../../helpers/database.js";
 
-import User from "./User.js";
 import InventoryItem from "./InventoryItem.js";
-import Customer from "./Customer.js";
 import Service from "./Service.js";
 
 const Transaction = database.define("Transaction", {
@@ -21,9 +19,11 @@ const Transaction = database.define("Transaction", {
     }
 });
 
-// Transaction.belongsTo(User);
-// Transaction.belongsTo(Customer);
-// Transaction.hasMany(InventoryItem);
-// Transaction.hasMany(Service);
+
+Transaction.belongsTo(InventoryItem);
+InventoryItem.hasMany(Transaction);
+
+Transaction.belongsTo(Service);
+Service.hasMany(Transaction);
 
 export default Transaction;

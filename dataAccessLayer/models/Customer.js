@@ -1,7 +1,6 @@
 import { DataTypes} from "sequelize";
 import database from "../../helpers/database.js";
 
-import User from "./User.js";
 import Transaction from "./Transaction.js";
 
 const Customer = database.define('Customer', {
@@ -17,7 +16,7 @@ const Customer = database.define('Customer', {
     },
 });
 
-// Customer.belongsTo(User);
-// Customer.hasMany(Transaction);
+Customer.hasMany(Transaction);
+Transaction.belongsTo(Customer);
 
 export default Customer;

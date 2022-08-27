@@ -1,7 +1,6 @@
 import { DataTypes} from "sequelize";
 import database from "../../helpers/database.js";
 
-import InventoryItem from "./InventoryItem.js";
 
 const PseudoInventoryItem = database.define("PseudoInventoryItem", {
     id: {
@@ -15,6 +14,5 @@ const PseudoInventoryItem = database.define("PseudoInventoryItem", {
     }
 });
 
-// PseudoInventoryItem.belongsTo(InventoryItem);
 
 export default PseudoInventoryItem;

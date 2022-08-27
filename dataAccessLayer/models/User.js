@@ -33,9 +33,16 @@ const User = database.define('User', {
     }
 });
 
-// User.hasMany(Customer);
-// User.hasMany(Transaction);
-// User.hasMany(InventoryItem);
-// User.hasMany(Service);
+User.hasMany(Customer);
+Customer.belongsTo(User);
+
+User.hasMany(Transaction);
+Transaction.belongsTo(User);
+
+User.hasMany(InventoryItem);
+InventoryItem.belongsTo(User);
+
+User.hasMany(Service);
+Service.belongsTo(User);
 
 export default User;

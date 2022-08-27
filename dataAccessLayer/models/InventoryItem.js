@@ -2,9 +2,6 @@ import { DataTypes} from "sequelize";
 import database from "../../helpers/database.js";
 
 import PseudoInventoryItem from "./PseudoInventoryItem.js";
-import User from "./User.js";
-import Transaction from "./Transaction.js";
-import Service from "./Service.js";
 
 const InventoryItem = database.define("InventoryItem", {
     id: {
@@ -27,9 +24,8 @@ const InventoryItem = database.define("InventoryItem", {
     }
 });
 
-// InventoryItem.hasOne(PseudoInventoryItem);
-// InventoryItem.belongsTo(Service);
-// InventoryItem.belongsTo(User);
-// InventoryItem.belongsTo(Transaction);
+InventoryItem.hasOne(PseudoInventoryItem);
+PseudoInventoryItem.belongsTo(InventoryItem);
+
 
 export default InventoryItem;
