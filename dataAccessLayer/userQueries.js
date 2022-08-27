@@ -41,7 +41,6 @@ export const getUserByEmail = (email) => {
                     console.log("userQueries: line 41",error)
                     return reject(error) 
                 } 
-                console.log(result)
                 return resolve(result[0])
             }
         )

@@ -1,4 +1,5 @@
 import { userHasAccess } from "../../utilities/verifyUser.js";
+import { enterIncomeQuery } from "../../dataAccessLayer/transactionQueries.js";
 
 export const enterIncome = async (req, res) => {
     try {
@@ -10,6 +11,7 @@ export const enterIncome = async (req, res) => {
 
             })
         }
+        enterIncomeQuery()
         
         res.send("Income Entered!")
     } catch (error) {
