@@ -1,10 +1,11 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { getUserByEmail } from "../../dataAccessLayer/userQueries.js";
+
+import { findByEmail } from "../../dataAccessLayer/services/UserService.js";
 
 export const login = async (req, res) => {
     try {
-        const user = await getUserByEmail(req.body.email)
+        const user = await findByEmail(req.body.email)
         const passwordsMatch = await bcrypt.compare(req.body.password, user.password)
         if(!passwordsMatch) throw "The email or password is incorrect.";
 
@@ -13,6 +14,7 @@ export const login = async (req, res) => {
             process.env.JWT_SECRET,
             // {expiresIn: ""}
         );
+        res.status(200)
         res.send({
             token: token,
             status: 200,

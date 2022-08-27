@@ -1,16 +1,17 @@
 import { DataTypes} from "sequelize";
-import database from "../../helpers/database";
+import database from "../../helpers/database.js";
 
-import User from "./User";
-import InventoryItem from "./InventoryItem";
-import Customer from "./Customer";
-import Service from "./Service";
+import User from "./User.js";
+import InventoryItem from "./InventoryItem.js";
+import Customer from "./Customer.js";
+import Service from "./Service.js";
 
 const Transaction = database.define("Transaction", {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true
+        autoIncrement: true,
+        primaryKey: true 
     },
     type: {
         type: DataTypes.ENUM("INCOME", "EXPENSE")
@@ -20,9 +21,9 @@ const Transaction = database.define("Transaction", {
     }
 });
 
-Transaction.belongsTo(User);
-Transaction.belongsTo(Customer);
-Transaction.hasMany(InventoryItem);
-Transaction.hasMany(Service);
+// Transaction.belongsTo(User);
+// Transaction.belongsTo(Customer);
+// Transaction.hasMany(InventoryItem);
+// Transaction.hasMany(Service);
 
 export default Transaction;

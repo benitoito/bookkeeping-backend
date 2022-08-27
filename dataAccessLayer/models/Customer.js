@@ -1,14 +1,15 @@
 import { DataTypes} from "sequelize";
-import database from "../../helpers/database";
+import database from "../../helpers/database.js";
 
-import User from "./User";
-import Transaction from "./Transaction";
+import User from "./User.js";
+import Transaction from "./Transaction.js";
 
 const Customer = database.define('Customer', {
     id: { 
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true 
+        autoIncrement: true,
+        primaryKey: true 
     },
     fullName: {
         type: DataTypes.STRING,
@@ -16,7 +17,7 @@ const Customer = database.define('Customer', {
     },
 });
 
-Customer.belongsTo(User);
-Customer.hasMany(Transaction);
+// Customer.belongsTo(User);
+// Customer.hasMany(Transaction);
 
 export default Customer;
