@@ -1,13 +1,15 @@
 import express from "express";
 
-import { userHasAccess } from "../../utilities/verifyUser.js";
+import { userHasAccess } from "../../middleware/verifyUser.js";
 
-import { enterIncome } from "../../controllers/transactionControllers/incomeController.js";
-import { enterExpense } from "../../controllers/transactionControllers/expenseController.js";
+import { transactionController } from "../../controllers/transactionControllers/transactionController.js";
 
 const transactionsRouter = express.Router();
 
-transactionsRouter.post('/income', enterIncome);
-transactionsRouter.post('/expense', enterExpense);
+const income = transactionController("INCOME");
+const expense = transactionController("EXPENSE");
+
+transactionsRouter.post('/income', userHasAccess, income);
+transactionsRouter.post('/expense', userHasAccess, expense);
 
 export default transactionsRouter;

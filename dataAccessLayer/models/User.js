@@ -33,16 +33,16 @@ const User = database.define('User', {
     }
 });
 
-User.hasMany(Customer);
-Customer.belongsTo(User);
+User.hasMany(Customer, { foreignKey: "userId" });
+Customer.belongsTo(User, { foreignKey: "userId" });
 
-User.hasMany(Transaction);
-Transaction.belongsTo(User);
+User.hasMany(Transaction, { foreignKey: "userId" });
+Transaction.belongsTo(User, { foreignKey: "userId" });
 
-User.hasMany(InventoryItem);
-InventoryItem.belongsTo(User);
+User.hasMany(InventoryItem, { foreignKey: "userId" });
+InventoryItem.belongsTo(User, { foreignKey: "userId" });
 
-User.hasMany(Service);
-Service.belongsTo(User);
+User.hasMany(Service, { foreignKey: "userId" });
+Service.belongsTo(User, { foreignKey: "userId" });
 
 export default User;

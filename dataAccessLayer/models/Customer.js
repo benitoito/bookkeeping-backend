@@ -16,7 +16,7 @@ const Customer = database.define('Customer', {
     },
 });
 
-Customer.hasMany(Transaction);
-Transaction.belongsTo(Customer);
+Customer.hasMany(Transaction, { foreignKey: "customerId" });
+Transaction.belongsTo(Customer, { foreignKey: "customerId" });
 
 export default Customer;

@@ -24,8 +24,8 @@ const InventoryItem = database.define("InventoryItem", {
     }
 });
 
-InventoryItem.hasOne(PseudoInventoryItem);
-PseudoInventoryItem.belongsTo(InventoryItem);
+InventoryItem.hasOne(PseudoInventoryItem, {foreignKey: "inventoryItemId"});
+PseudoInventoryItem.belongsTo(InventoryItem, {foreignKey: "inventoryItemId"});
 
 
 export default InventoryItem;

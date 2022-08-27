@@ -20,10 +20,10 @@ const Transaction = database.define("Transaction", {
 });
 
 
-Transaction.belongsTo(InventoryItem);
-InventoryItem.hasMany(Transaction);
+Transaction.belongsTo(InventoryItem, { foreignKey: "inventoryItemId" });
+InventoryItem.hasMany(Transaction, { foreignKey: "inventoryItemId" });
 
-Transaction.belongsTo(Service);
-Service.hasMany(Transaction);
+Transaction.belongsTo(Service, { foreignKey: "inventoryItemId" });
+Service.hasMany(Transaction, { foreignKey: "inventoryItemId" });
 
 export default Transaction;
